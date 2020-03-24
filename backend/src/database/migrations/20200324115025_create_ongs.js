@@ -5,8 +5,7 @@ exports.up = function(knex) { // rsponsável pela criação da tabela - o que ac
        table.string('name').notNullable();
        table.string('email').notNullable();
        table.string('whatsapp').notNullable();
-       table.string('cidade').notNullable();
-       table.string('estado').notNullable();
+       table.string('city').notNullable();
        table.string('uf', 2).notNullable();
   })
 };
