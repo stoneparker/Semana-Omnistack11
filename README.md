@@ -8,11 +8,7 @@
 - **React Native** (Front-end Mobile)
 - **SQLite** (Banco de dados)
 
-### Entidades
-- ONGs
-- Casos
-
-### Funcionalidades
+## Funcionalidades
 - [x] Cadastrar novas ONGs
 - [x] Login de ONGs
 - [ ] Logout de ONGs
@@ -23,3 +19,7 @@
 - [ ] Entrar em contato com uma ONG
 
 > Todas as funcionalidades até então concluídas foram realizadas apenas na parte do back-end
+
+### Entidades
+- ONGs
+- Casos
