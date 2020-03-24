@@ -1,12 +1,11 @@
 # Semana-Omnistack11
 
-Sistema de doação para ONGs por meio de um aplicativo, que cadastra suas "necessidades" através de uma aplicação Web.
+***Be The Hero*** - Sistema de doação para ONGs por meio de um aplicativo, que cadastra suas "necessidades" através de uma aplicação Web.
 
 ## Tecnologias
 - **Node.js** (Back-end)
 - **ReactJS** (Front-end Web)
 - **React Native** (Front-end Mobile)
-
 - **SQLite** (Banco de dados)
 
 ### Entidades
