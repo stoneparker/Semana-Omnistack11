@@ -1,10 +1,28 @@
 const connection = require('../database/connection');
 
 module.exports = {
+     
+     // COM PAGINAÇÃO
      async index(request, response) {
-          const incidents = await connection('incidents').select('*');
+          const { page = 1 } = request.query; // se page não existir, é criada com o valor 1
 
-          return response.json(incidents)
+          const [count] = await connection('incidents').count(); // quantidade de registros
+
+          const incidents = await connection('incidents')
+          .join('ongs', 'ongs.id', '=', 'incidents.ong_id')
+          .limit(5) // limitar os registros retornados
+          .offset((page - 1) * 5) // a partir de qual registro ele começará a buscar. na primeira pág, a partir do 0, na segunda a partir do 5...
+          .select([
+               'incidents.*', 
+               'ongs.name', 
+               'ongs.email', 
+               'ongs.whatsapp', 
+               'ongs.city', 
+               'ongs.uf'
+          ]);
+
+          response.header('X-Total-Count', count['count(*)']); // resposta no header - usado na paginação
+          return response.json(incidents);
      },
 
      async create(request, response) {
