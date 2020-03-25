@@ -26,11 +26,13 @@ export default function Register() {
                city,
                uf
           }
-          
+
           try {
                const response = await api.post('ongs', data);
                const { id } = response.data;
 
+               
+               console.log(response.data);
                alert(`Seu ID de acesso: ${id}`);
 
                history.push('/'); // serve para quando não é possível utilizar o Link-to, como agora
