@@ -16,7 +16,7 @@
 - [x] Deletar casos
 - [x] Listar casos específicos de uma ONG
 - [x] Listar todos os casos
-- [] Entrar em contato com uma ONG
+- [ ] Entrar em contato com uma ONG
 
 > Todas as funcionalidades até então concluídas foram realizadas apenas na parte do back-end e front-end web.
 
