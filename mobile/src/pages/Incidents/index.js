@@ -8,7 +8,11 @@ import logoImg from '../../assets/logo.png';
 import styles from './styles';
 
 export default function Incidents() {
-     const navigation = useNavigation();
+     const navigation = useNavigation(); // como "useHistory()" no ReactJS
+
+     function navigateToDetails() {
+          navigation.navigate('Detail'); // como history.push, especificando o nome da rota para a qual deseja navegar
+     }
 
      return (
           <View style={styles.container}>
@@ -39,7 +43,7 @@ export default function Incidents() {
 
                               <TouchableOpacity 
                                    style={styles.detailsButton} 
-                                   onPress={() => {}}
+                                   onPress={navigateToDetails}
                                    >
                                    <Text style={styles.detailsButtonText}>Ver mais detalhes</Text>     
                                    <Feather name="arrow-right" size={16} color="#e02041" />
