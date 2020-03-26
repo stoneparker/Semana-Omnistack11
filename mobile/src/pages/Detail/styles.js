@@ -22,6 +22,12 @@ export default StyleSheet.create({
           marginTop: 40
      },
 
+     incidentsLine: {
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+     },
+
+
      incidentProperty: {
           fontSize: 14,
           color: '#41414d',
