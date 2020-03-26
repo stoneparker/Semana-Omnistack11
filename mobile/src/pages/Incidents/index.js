@@ -14,16 +14,29 @@ export default function Incidents() {
      const [incidents, setIncidents] = useState([]);
      const [total, setTotal] = useState(0);
      const [page, setPage] = useState(1);
+     const [loading, setLoading] = useState(false);
 
      function navigateToDetails(incident) {
           navigation.navigate('Detail', { incident }); // como history.push, especificando o nome da rota para a qual deseja navegar
      }
 
      async function loadIncidents() {
-          const response = await api.get('incidents');
+          if (loading) {
+               return;
+          }
+          if (total > 0 && incidents.length == total) { // então pelo menos a primeira página já foi carregada && todos os casos já foram carregados
+               return;
+          }
 
-          setIncidents(response.data);
+          setLoading(true);
+          const response = await api.get('incidents', {
+               params: { page }
+          });
+
+          setIncidents([... incidents, ... response.data]); // ao invés de trocar o valor, anexar os novos ao já existente. ANEXAR 2 VETORES DENTRO DE 1
           setTotal(response.headers['x-total-count']);
+          setPage(page + 1);
+          setLoading(false);
      }
 
      useEffect(() => {
@@ -47,6 +60,8 @@ export default function Incidents() {
                     data={incidents}
                     showsVerticalScrollIndicator={false}
                     keyExtractor={incident => String(incident.id)} /* recebe cada um dos incidents de "data" */
+                    onEndReached={loadIncidents} /* quando usuário chegar ao final da lista */
+                    onEndReachedThreshold={0.2} /* em quantos % do final da lista o usuário precisa estar para que novos itens sejam carregados. 20% */
                     renderItem={({ item: incident }) => (
                          <View style={styles.incident}>
                               <Text style={styles.incidentProperty}>ONG:</Text>
